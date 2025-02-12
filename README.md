@@ -66,6 +66,12 @@ docker exec -it laravel_app php artisan app:create-admin
 ```
 Now, you're all set! 🚀🎉
 
+### Architecture
+C4 modal of architecture:
+![arc drawio](https://github.com/user-attachments/assets/d2ad8a21-f0ff-49b4-84fe-aec3e81d4bcc)
+![image](https://github.com/user-attachments/assets/a68c0416-a59e-4645-a439-96c345d1b168)
+
+
 ### How to play?
 Just go to the quest what you want, select the amount of players you want to play with and start the game!
 ![image](https://github.com/user-attachments/assets/f8dce6d2-475c-47ba-96a3-3d9d2af531d7)
