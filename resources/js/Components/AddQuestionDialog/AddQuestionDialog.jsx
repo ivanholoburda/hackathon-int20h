@@ -160,14 +160,6 @@ function AddQuestionDialog({open, onClose, onAdd, questionTypes, initialData}) {
         }
 
         onAdd({...questionData, image: questionData.imageFile, imageFile: undefined});
-        setQuestionData({
-            title: "",
-            description: "",
-            type: Object.keys(questionTypes)[0],
-            questions: null,
-            single_answer: "",
-            coordinates: [],
-        });
         onClose();
     };
 
