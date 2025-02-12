@@ -1,3 +1,13 @@
+# Produciton
+## This is project is already in production and you can test it out with your own!
+### http://34.59.234.46/
+### Admin page access:
+```
+http://34.59.234.46/
+Username: admin@admin.com
+Password: Secret123!
+```
+
 ### Installing using Docker
 
 > You need to have [docker](http://www.docker.com) (1.17.0+) and
@@ -15,43 +25,23 @@ npm install
 npm run build or npm run dev
 ```
 
-### You need to configure the env and change the variables
+### You need to configure the env and change the variables (configure pusher and github OAuth especially)
 
-```sh
-APP_SERVICE=backend
+### Build the project using following commands
 ```
-
-### Second you need install Sail using the Composer package manager and after configuring a shell alias using the following command:
-
-_If your existing local development environment allows you to install Composer dependencies_
-
-```sh
-composer require laravel/sail --dev
-alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+docker exec -it laravel_app composer remove backpack/devtools
+docker exec -it laravel_app composer install
+docker exec -it laravel_app php artisan key:generate
+docker exec -it laravel_app php artisan storage:link
+docker exec -it laravel_app php artisan migrate
+docker exec -it laravel_app npm install
+docker exec -it laravel_app npm run build
 ```
+### Go to http://localhost and you will see the main page
 
-*Note pls do it in Ubuntu WSL distro*
-
-_Alias sail only available in the terminal where you entered them_
-<br>
-_Once the shell alias has been configured, you may execute Sail commands._
-<br>
-_You can add alias global to phpstorm terminal or other terminal_
-
-### To start all of the Docker containers in the background, you may start Sail in "detached" mode:
-
-```sh
-sail up -d
+## Creating an admin user
+### When your project have been successfuly installed, you probably would like to acces the admin panel
+To do it you can run and fill out the information
 ```
-
-_It may take some time to download the required images._
-
-_To stop all of the containers run:_ `sail stop`
-
-
-### When done, you need to execute the following commands:
-
-```sh
-sail composer install && sail artisan key:generate && sail artisan migrate && sail artisan storage:link && sail artisan db:seed
+docker exec -it laravel_app php artisan app:create-admin
 ```
-
