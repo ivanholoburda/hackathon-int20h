@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const DraggableWrapper = ({ children }) => {
-    const [position, setPosition] = useState({ x: 200, y: 100 });
+    const [position, setPosition] = useState({ x: 300, y: 200 });
     const [dragging, setDragging] = useState(false);
     const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 
@@ -33,7 +33,7 @@ const DraggableWrapper = ({ children }) => {
                 left: position.x,
                 top: position.y,
                 cursor: "grab",
-                zIndex: 1000
+                zIndex: 10
             }}
             onMouseDown={onMouseDown}
             onMouseMove={onMouseMove}
