@@ -65,3 +65,10 @@ After a successful installation, you might want to create an admin user for the 
 docker exec -it laravel_app php artisan app:create-admin
 ```
 Now, you're all set! 🚀🎉
+
+### How to play?
+Just go to the quest what you want, select the amount of players you want to play with and start the game!
+![image](https://github.com/user-attachments/assets/f8dce6d2-475c-47ba-96a3-3d9d2af531d7)
+![image](https://github.com/user-attachments/assets/201930a8-84bb-4123-871f-874e6742405d)
+![image](https://github.com/user-attachments/assets/1f76d877-ac1b-4c93-a188-8b3d11e2c866)
+
