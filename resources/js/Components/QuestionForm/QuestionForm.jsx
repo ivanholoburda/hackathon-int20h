@@ -14,7 +14,8 @@ export default function QuestionForm({currentQuestion, checkAnswer, surrender, o
 
     useEffect(() => {
         if (!currentQuestion) return;
-
+        setUserAnswer("");
+        setSelectedOption(null);
         setTimeLeft(currentQuestion.seconds_left);
         const timer = setInterval(() => {
             setTimeLeft(prev => {
