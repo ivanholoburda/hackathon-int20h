@@ -38,7 +38,25 @@ export default function QuestionForm({currentQuestion, checkAnswer, surrender, o
     };
 
     const handleSubmit = async () => {
+        if (currentQuestion.type === "questions" && !selectedOption) {
+            setFeedback({
+                open: true,
+                success: false,
+                message: "Будь ласка, оберіть відповідь перед відправкою!",
+            });
+            return;
+        }
+
         setLoading(true);
+
+        if (currentQuestion.type === "questions" && !selectedOption) {
+            setFeedback({
+                open: true,
+                success: false,
+                message: "Будь ласка, оберіть відповідь перед відправкою!",
+            });
+            return;
+        }
 
         let answerPayload;
         if (currentQuestion.type === "single_answer") {
