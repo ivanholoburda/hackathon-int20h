@@ -26,7 +26,7 @@ export default function Home() {
                     href="/rooms"
                     className="bg-[#66bb6a] text-white px-8 py-4 rounded-full shadow-lg text-lg font-semibold transition transform hover:bg-[#388E3C] hover:scale-105 duration-300"
                 >
-                    Активні кімніти
+                    Активні кімнати
                 </Link>
             </div>
 

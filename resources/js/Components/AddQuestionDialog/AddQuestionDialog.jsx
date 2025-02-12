@@ -156,10 +156,19 @@ function AddQuestionDialog({open, onClose, onAdd, questionTypes, initialData}) {
                 setOpenSnackbar(true);
                 return;
             }
-
         }
 
         onAdd({...questionData, image: questionData.imageFile, imageFile: undefined});
+        setQuestionData({
+            title: "",
+            description: "",
+            type: Object.keys(questionTypes)[0],
+            questions: null,
+            single_answer: "",
+            coordinates: [],
+            seconds_left: 10,
+        });
+
         onClose();
     };
 
@@ -204,7 +213,7 @@ function AddQuestionDialog({open, onClose, onAdd, questionTypes, initialData}) {
                         required
                         fullWidth
                         margin="normal"
-                        value={questionData.seconds_left || 10} // Мінімальне значення 10
+                        value={questionData.seconds_left || 10}
                         onChange={(e) => {
                             const value = Math.max(10, parseInt(e.target.value, 10) || 10); // Мінімальне значення 10
                             setQuestionData({...questionData, seconds_left: value});

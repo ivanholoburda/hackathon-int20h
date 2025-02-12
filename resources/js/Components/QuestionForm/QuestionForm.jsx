@@ -41,11 +41,11 @@ export default function QuestionForm({currentQuestion, checkAnswer, surrender, o
 
         let answerPayload;
         if (currentQuestion.type === "single_answer") {
-            answerPayload = {single_answer: userAnswer};
+            answerPayload = { single_answer: userAnswer };
         } else if (currentQuestion.type === "questions") {
-            answerPayload = {question: currentQuestion.questions.find(q => q.text === selectedOption).correct};
+            answerPayload = { question: currentQuestion.questions.find(q => q.text === selectedOption).correct };
         } else {
-            answerPayload = {coordinates: clickCoordinates};
+            answerPayload = { coordinates: clickCoordinates };
         }
 
         try {
@@ -53,18 +53,15 @@ export default function QuestionForm({currentQuestion, checkAnswer, surrender, o
             setFeedback({
                 open: true,
                 success: result,
-                message: result ? "Правильна відповідь!" : "Неправильна відповідь, очікуйте!"
+                message: result ? "Правильна відповідь!" : "Неправильна відповідь, очікуйте!",
             });
-            setUserAnswer("");
-            setSelectedOption(null);
-            setClickCoordinates(null);
+
             if (!result) {
                 surrender();
                 return;
             }
             await rollDice();
             onClose();
-
         } finally {
             setLoading(false);
         }
