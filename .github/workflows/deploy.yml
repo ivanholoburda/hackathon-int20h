@@ -1,0 +1,29 @@
+name: Deploy to GCP VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Vultr VM via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_HOST }}
+          username: ${{ secrets.GCP_USERNAME }}
+          key: ${{ secrets.GCP_VM_SSH_KEY }}
+          port: 22
+          script: |
+            cd hackathon-int20h
+            git pull origin main
+            sudo docker exec laravel_app php artisan migrate --force
+            sudo docker exec laravel_app npm install
+            sudo docker exec laravel_app npm run build
