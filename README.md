@@ -1,47 +1,67 @@
-# Produciton
-## This is project is already in production and you can test it out with your own!
-### http://34.59.234.46/
-### Admin page access:
-```
-http://34.59.234.46/
-Username: admin@admin.com
-Password: Secret123!
-```
+# 🚀 Production Deployment
 
-### Installing using Docker
+This project is already live! You can test it out yourself:
 
-> You need to have [docker](http://www.docker.com) (1.17.0+) and
-> [docker-compose](https://docs.docker.com/compose/install/) (1.14.0+) installed.
+🔗 **Live Demo:** [http://34.59.234.46/](http://34.59.234.46/)
 
-## You can install the application using the following commands:
+🔑 **Admin Panel Access:**  
+- **URL:** [http://34.59.234.46/admin](http://34.59.234.46/admin)  
+- **Username:** `admin@admin.com`  
+- **Password:** `Secret123!`
 
-### Firstly you need to clone the project and do some basic setup of the .env file:
+---
+
+## 📦 Installation with Docker
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Docker](http://www.docker.com) (v1.17.0+)
+- [Docker Compose](https://docs.docker.com/compose/install/) (v1.14.0+)
+
+---
+
+## 🛠 Installation Steps
+
+### 1️⃣ Clone the Repository & Setup Environment
 
 ```sh
-git clone *repository name*
-cd *folder*
+git clone <repository-name>
+cd <project-folder>
 cp .env.example .env
 npm install
-npm run build or npm run dev
+npm run build  # Or use: npm run dev
 ```
-
-### You need to configure the env and change the variables (configure pusher and github OAuth especially)
-
-### Build the project using following commands
-```
+📝 Note: Be sure to configure the .env file properly. Pay special attention to Pusher and GitHub OAuth settings.
+### 2️⃣ Build the Project Using Docker
+```sh
+# Remove development tools
 docker exec -it laravel_app composer remove backpack/devtools
+
+# Install dependencies
 docker exec -it laravel_app composer install
+
+# Generate application key
 docker exec -it laravel_app php artisan key:generate
+
+# Create symbolic link for storage
 docker exec -it laravel_app php artisan storage:link
+
+# Run migrations
 docker exec -it laravel_app php artisan migrate
+
+# Install front-end dependencies
 docker exec -it laravel_app npm install
+
+# Build front-end assets
 docker exec -it laravel_app npm run build
 ```
-### Go to http://localhost and you will see the main page
+Once completed, you can access the main page at 🔗 http://localhost
 
-## Creating an admin user
-### When your project have been successfuly installed, you probably would like to acces the admin panel
-To do it you can run and fill out the information
-```
+### 👑 Creating an Admin User
+After a successful installation, you might want to create an admin user for the panel. To do so, run the following command and provide the necessary details:
+```sh
 docker exec -it laravel_app php artisan app:create-admin
 ```
+Now, you're all set! 🚀🎉
