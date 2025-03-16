@@ -12,6 +12,10 @@ use App\Http\Controllers\User\UserHistoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/balancer', function() {
+    return 'Handled by container: ' . gethostname();
+});
+
 Route::get('/', function () {
     return Inertia::render('Homepage/Index');
 })
