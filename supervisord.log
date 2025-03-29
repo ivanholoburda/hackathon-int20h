@@ -11158,3 +11158,35 @@
 2025-02-10 10:56:56,718 INFO waiting for php-fpm, php-worker_00 to die
 2025-02-10 10:56:57,020 WARN stopped: php-worker_00 (exit status 1)
 2025-02-10 10:56:57,024 INFO stopped: php-fpm (exit status 0)
+2025-02-21 09:01:15,547 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-02-21 09:01:15,554 INFO supervisord started with pid 1
+2025-02-21 09:01:16,557 INFO spawned: 'php-fpm' with pid 7
+2025-02-21 09:01:16,561 INFO spawned: 'php-worker_00' with pid 8
+2025-02-21 09:01:17,740 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-02-21 09:01:17,740 INFO success: php-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-02-21 09:01:23,052 WARN exited: php-worker_00 (exit status 1; not expected)
+2025-02-21 09:01:24,056 INFO spawned: 'php-worker_00' with pid 15
+2025-02-21 09:01:25,056 INFO success: php-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-02-21 09:01:28,569 WARN exited: php-worker_00 (exit status 1; not expected)
+2025-02-21 09:01:29,573 INFO spawned: 'php-worker_00' with pid 20
+2025-02-21 09:01:30,574 INFO success: php-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-02-21 09:01:35,458 WARN exited: php-worker_00 (exit status 1; not expected)
+2025-02-21 09:01:36,462 INFO spawned: 'php-worker_00' with pid 25
+2025-02-21 09:01:37,464 INFO success: php-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-02-21 09:01:42,476 WARN exited: php-worker_00 (exit status 1; not expected)
+2025-02-21 09:01:43,480 INFO spawned: 'php-worker_00' with pid 30
+2025-02-21 09:01:44,482 INFO success: php-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-02-21 09:01:45,483 WARN received SIGQUIT indicating exit request
+2025-02-21 09:01:45,483 INFO waiting for php-fpm, php-worker_00 to die
+2025-02-21 09:01:45,486 WARN stopped: php-worker_00 (terminated by SIGTERM)
+2025-02-21 09:01:45,489 INFO stopped: php-fpm (exit status 0)
+2025-03-25 12:01:06,186 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-03-25 12:01:06,190 INFO supervisord started with pid 1
+2025-03-25 12:01:07,207 INFO spawned: 'php-fpm' with pid 7
+2025-03-25 12:01:07,231 INFO spawned: 'php-worker_00' with pid 8
+2025-03-25 12:01:08,397 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-25 12:01:08,397 INFO success: php-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-03-25 12:01:09,398 WARN received SIGQUIT indicating exit request
+2025-03-25 12:01:09,399 INFO waiting for php-fpm, php-worker_00 to die
+2025-03-25 12:01:10,401 WARN stopped: php-worker_00 (terminated by SIGTERM)
+2025-03-25 12:01:10,419 INFO stopped: php-fpm (exit status 0)
