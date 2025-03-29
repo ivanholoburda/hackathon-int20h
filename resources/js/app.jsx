@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import React from 'react';
 import '../css/app.css'
 import Layout from "@/Layouts/Layout.jsx";
-
+//test
 createInertiaApp({
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
