@@ -30,13 +30,12 @@ jobs:
           sudo apt-get install -y unzip libzip-dev libpng-dev libonig-dev
           composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Run tests
-        run: php artisan test
-
       - name: Build frontend (npm)
         run: |
           npm install
           npm run build
+      - name: Run tests
+        run: php artisan test
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
