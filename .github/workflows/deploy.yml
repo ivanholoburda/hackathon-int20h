@@ -1,4 +1,4 @@
-name: Deploy to GCP VM
+name: Deploy Azure VM
 
 on:
   push:
@@ -7,19 +7,19 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy to Azure via SSH
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Vultr VM via SSH
+      - name: SSH deploy with username & password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.GCP_HOST }}
-          username: ${{ secrets.GCP_USERNAME }}
-          key: ${{ secrets.GCP_VM_SSH_KEY }}
+          host: ${{ secrets.AZURE_HOST }}
+          username: ${{ secrets.AZURE_USERNAME }}
+          password: ${{ secrets.AZURE_PASSWORD }}
           port: 22
           script: |
             cd hackathon-int20h
