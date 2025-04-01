@@ -26,7 +26,8 @@ jobs:
 
       - name: Run Larastan
         run: |
-          ./vendor/bin/phpstan analyse --memory-limit=1G
+          composer global require laravel/pint
+          ~/.composer/vendor/bin/pint --test
 
   deploy:
     name: Deploy to Azure via SSH
