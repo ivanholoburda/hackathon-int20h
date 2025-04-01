@@ -1,29 +1,62 @@
-name: Deploy Azure VM
+name: Deploy to Azure VM
 
 on:
   push:
     branches:
       - main
+      - staging
+  workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy to Azure via SSH
+  sast:
+    name: Run SAST (Larastan)
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --no-interaction
+
+      - name: Run Larastan
+        run: |
+          ./vendor/bin/phpstan analyse --memory-limit=1G
+
+  deploy:
+    name: Deploy to Azure via SSH
+    runs-on: ubuntu-latest
+    needs: sast
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Define deploy host based on branch
+        id: set-host
+        run: |
+          if [[ "${GITHUB_REF##*/}" == "main" ]]; then
+            echo "host=${{ secrets.AZURE_PROD_HOST }}" >> $GITHUB_OUTPUT
+          else
+            echo "host=${{ secrets.AZURE_DEV_HOST }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: SSH deploy with username & password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AZURE_HOST }}
+          host: ${{ steps.set-host.outputs.host }}
           username: ${{ secrets.AZURE_USERNAME }}
           password: ${{ secrets.AZURE_PASSWORD }}
           port: 22
           script: |
             cd hackathon-int20h
-            sudo git pull origin main
+            sudo git pull origin ${GITHUB_REF##*/}
+            sudo docker compose pull
+            sudo docker compose up -d --build
             sudo docker exec hackathon-int20h_app_1 php artisan migrate --force
             sudo docker exec hackathon-int20h_app_1 npm install
             sudo docker exec hackathon-int20h_app_1 npm run build
