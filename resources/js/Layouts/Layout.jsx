@@ -19,7 +19,7 @@ export default function Layout({ children }) {
                                 textShadow: "2px 2px 6px rgba(0, 0, 0, 0.2)",
                             }}
                         >
-                            RzhadQuest
+                            RzhadQuest1
                         </Link>
 
                         <div className="md:hidden">
