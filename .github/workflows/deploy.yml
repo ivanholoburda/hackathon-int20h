@@ -55,7 +55,8 @@ jobs:
           script: |
             cd hackathon-int20h
             sudo git pull origin ${GITHUB_REF##*/}
+            sudo docker-compose down
             sudo docker-compose up -d --build
-            sudo docker exec hackathon-int20h_app_1 php artisan migrate --force
-            sudo docker exec hackathon-int20h_app_1 npm install
-            sudo docker exec hackathon-int20h_app_1 npm run build
+            sudo docker exec -it hackathon-int20h_app_1 php artisan migrate --force
+            sudo docker exec -it hackathon-int20h_app_1 npm install
+            sudo docker exec -it hackathon-int20h_app_1 npm run build
